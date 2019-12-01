@@ -1,0 +1,115 @@
+<!-- Material form login -->
+<div class="col-lg-4 col-md-6 offset-md-4 mb-4" style="margin-top: 8%;">
+        <mdb-card>
+        
+                <mdb-card-header class="info-color white-text text-center py-4">
+                  <h5>
+                    <strong>Sign up</strong>
+                  </h5>
+                </mdb-card-header>
+              
+              
+                <!--Card content-->
+                <mdb-card-body class="px-lg-5 pt-0">
+              
+                  <!-- Form -->
+                  <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()" class="text-center" style="color: #757575;">
+              
+                    <!-- Email -->
+                    <div class="md-form">
+                      <input #username type="email" formControlName="username" id="materialLoginFormEmail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" mdbInput>
+                      <label for="materialLoginFormEmail">Username</label>
+                      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Username is required</div>
+                      </div>
+                    </div>
+              
+                    <!-- Password -->
+                    <div class="md-form">
+                      <input #password type="password" formControlName="password" id="materialLoginFormPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" mdbInput>
+                      <label for="materialLoginFormPassword">Password</label>
+                      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                      </div>
+                    </div>
+
+                    <div class="md-form">
+                            <input #email type="email" formControlName="email" id="materialLoginFormEmail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" mdbInput>
+                            <label for="materialLoginFormEmail">Email</label>
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                              <div *ngIf="f.username.errors.required">Username is required</div>
+                            </div>
+                          </div>
+                    <div class="md-form">
+                            <input #firstname type="email" formControlName="firstname" id="materialLoginFormEmail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" mdbInput>
+                            <label for="materialLoginFormEmail">Firstname</label>
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                              <div *ngIf="f.username.errors.required">Firstname is required</div>
+                            </div>
+                          </div>
+
+                          <div class="md-form">
+                                <input #lastname type="email" formControlName="lastname" id="materialLoginFormEmail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" mdbInput>
+                                <label for="materialLoginFormEmail">Lastname</label>
+                                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                  <div *ngIf="f.username.errors.required">Username is required</div>
+                                </div>
+                              </div>
+                              <div class="md-form">
+                                    <input #cnic type="email" formControlName="cnic" id="materialLoginFormEmail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" mdbInput>
+                                    <label for="materialLoginFormEmail">CNIC</label>
+                                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                      <div *ngIf="f.username.errors.required">Username is required</div>
+                                    </div>
+                                  </div>
+                                  <div class="md-form">
+                                        <input #contact type="email" formControlName="contact" id="materialLoginFormEmail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" mdbInput>
+                                        <label for="materialLoginFormEmail">Contact</label>
+                                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                          <div *ngIf="f.username.errors.required">Username is required</div>
+                                        </div>
+                                      </div>
+              
+                    <div class="d-flex justify-content-around">
+                      <div>
+                        <!-- Remember me -->
+                        <mdb-checkbox>Remember me</mdb-checkbox>
+                      </div>
+                      <div>
+                        <!-- Forgot password -->
+                        <a href="">Forgot password?</a>
+                      </div>
+                    </div>
+              
+                    <!-- Sign in button -->
+                    <button mdbBtn color="info" outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0" mdbWavesEffect
+                      type="submit">Sign up</button>
+              
+                    <!-- Register -->
+                    <p>Not a member?
+                      <a href="">Register</a>
+                    </p>
+              
+                    <!-- Social login -->
+                    <p>or sign in with:</p>
+                    <a type="button" mdbBtn floating="true" color="fb" size="sm">
+                      <mdb-icon fab icon="facebook"></mdb-icon>
+                    </a>
+                    <a type="button" mdbBtn floating="true" color="tw" size="sm">
+                      <mdb-icon fab icon="twitter"></mdb-icon>
+                    </a>
+                    <a type="button" mdbBtn floating="true" color="li" size="sm">
+                      <mdb-icon fab icon="linkedin"></mdb-icon>
+                    </a>
+                    <a type="button" mdbBtn floating="true" color="git" size="sm">
+                      <mdb-icon fab icon="github"></mdb-icon>
+                    </a>
+              
+                  </form>
+                  <!-- Form -->
+              
+                </mdb-card-body>
+              
+              </mdb-card>
+              <!-- Material form login -->
+            </div>      
