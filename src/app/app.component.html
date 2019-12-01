@@ -1,4 +1,4 @@
-
+<div class="app"> 
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark danger-color-dark fixed-top scrolling-navbar" [containerInside]="false">
   <mdb-navbar-brand>
       <a class="logo navbar-brand" href="/home"><strong>EventPortal</strong></a>
@@ -18,13 +18,13 @@
           
       </ul>
       <ul class="navbar-nav nav-flex-icons">
-          <li *ngIf="authenticatedUser == null" class="nav-item waves-light" mdbWavesEffect>
+          <li *ngIf="currentUser == null" class="nav-item waves-light" mdbWavesEffect>
               <a routerLink="/register" class="nav-link">Signup</a>
           </li>
-          <li *ngIf="authenticatedUser == null" class="nav-item waves-light" mdbWavesEffect>
+          <li *ngIf="currentUser == null" class="nav-item waves-light" mdbWavesEffect>
               <a routerLink="/login" class="nav-link">Login</a>
           </li>
-          <li *ngIf="authenticatedUser" class="nav-item waves-light" mdbWavesEffect>
+          <li *ngIf="currentUser" class="nav-item waves-light" mdbWavesEffect>
               <a (click)="this.logout()" routerLink="/home" class="nav-link">Logout</a>
           </li>
           <li class="nav-item waves-light" mdbWavesEffect>
@@ -44,4 +44,4 @@
 <!-- /.Main -->
 <app-footer></app-footer>
 <!-- /Start your project here-->
-
+</div>

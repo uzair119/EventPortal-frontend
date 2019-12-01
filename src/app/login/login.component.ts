@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthenticationService } from '../authentication-service.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { XhrInterceptor } from '../xhr-interceptor.service';
 import { HttpResponse, HttpHeaders } from '@angular/common/http';
 
@@ -46,9 +46,11 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.invalid) {
             return;
         }
-        
-            this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
+        const formData: FormData = new FormData();
+        formData.append('username', this.f.username.value);
+        formData.append('password', this.f.password.value);
+        this.loading = true;
+        this.authenticationService.login(formData)
             .pipe(first())
             .subscribe(
               (data: HttpResponse<any>) => {

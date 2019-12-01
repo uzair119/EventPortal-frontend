@@ -8,11 +8,13 @@ import { CompetitionRegisterComponent } from './competition-register/competition
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent},
   { path: 'competitions', component: CompetitionsComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'home', component: HomeComponent},
   { path: 'competitionregister', component: CompetitionRegisterComponent},
-  { path: 'register', component:SignupComponent}
+  { path: 'register', component: SignupComponent},
+  { path: '**', redirectTo: ''}
+
 ];
 
 @NgModule({

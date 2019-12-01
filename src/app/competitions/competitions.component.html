@@ -1,27 +1,29 @@
-  
+<div *ngIf="this.loader==true" class="spinner_overlay"></div>
+<!--Main layout-->
+<main class="mt-5">
 
-  <!--Main layout-->
-  <main class="mt-5">
+  <!--Main container-->
+  <div class="container">
 
-    <!--Main container-->
-    <div class="container">
+    <div *ngIf="this.loader==true" class="spinner-border text-blue" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    
+    <!--Grid row-->
+    <div class="row">
+      <app-competitioncard class="col-lg-4 col-md-6 mb-4" *ngFor="let competition of competitions"
+        [competition]="competition"></app-competitioncard>
 
-      
-      <!--Grid row-->
-      <div class="row">
-        <app-competitioncard class="col-lg-4 col-md-6 mb-4" *ngFor="let competition of competitions" [competition] = "competition"></app-competitioncard>
-        
 
-        
 
-      </div>
-      <!--Grid row-->
 
     </div>
-    <!--Main container-->
+    <!--Grid row-->
 
-  </main>
-  <!--Main layout-->
+  </div>
+  <!--Main container-->
 
-  <!-- Footer -->
-  
+</main>
+<!--Main layout-->
+
+<!-- Footer -->

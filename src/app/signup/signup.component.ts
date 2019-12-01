@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from '../authentication-service.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { first, map } from 'rxjs/operators';
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse, HttpClient } from '@angular/common/http';
 import { User } from '../user';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-signup',
@@ -16,15 +17,13 @@ export class SignupComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
-  http: any;
-  url: string;
-  currentUserSubject: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
+    private http: HttpClient
   ) {
       // redirect to home if already logged in
       // if (this.authenticationService.currentUserValue) {
@@ -50,7 +49,7 @@ export class SignupComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
-  onSubmit(): User {
+  onSubmit() {
       this.submitted = true;
 
       // stop here if form is invalid
@@ -59,25 +58,28 @@ export class SignupComponent implements OnInit {
       }
 
       console.log(this.f);
-      var formData: any = new FormData();
-            formData.append("username", this.f.username.value);
-            formData.append("password", this.f.password.value) ;
-            formData.append("email", this.f.email.value) ;
-            formData.append("firstname", this.f.firstname.value) ;
-            formData.append("lastname", this.f.lastname.value) ;
-            formData.append("cnic", this.f.cnic.value) ;
-            formData.append("contactNum", this.f.contact.value) ;
-          
-            return this.http.post(this.url + '/register', formData, {observe: 'response' as 'body'})
-            .pipe(map(user => {
-              console.log(user);
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                // localStorage.setItem('currentUser', JSON.stringify(user));
-                //this.currentUserSubject.next(user);
-                return user;
-            }));
-             
-         
+      const json = {
+        'username': this.f.username.value,
+        'password': this.f.password.value,
+        'email': this.f.email.value,
+        'firstname': this.f.firstname.value,
+        'lastname': this.f.lastname.value,
+        'cnic': this.f.cnic.value,
+        'contactNum': this.f.contact.value
+      };
+            this.authenticationService.signup(json)
+            .pipe(first())
+            .subscribe(
+              (data: HttpResponse<any>) => {
+                console.log(data);
+                this.router.navigate(['/login']);
+              },
+                error => {
+                    console.log(error);
+                    this.loading = false;
+                });
+
+
   }
 
 }

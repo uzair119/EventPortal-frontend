@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Competition } from '../competition';
-import { CompetitionService } from '../competition.service';
+import { CompetitionService } from '../services/competition.service';
 
 @Component({
   selector: 'app-competitions',
@@ -11,16 +11,18 @@ import { CompetitionService } from '../competition.service';
 export class CompetitionsComponent implements OnInit {
 
   competitions: Competition[];
+  loader: boolean;
 
   constructor(private competitionService: CompetitionService) { }
 
   ngOnInit() {
+    this.loader = true;
     this.getCompetitions();
   }
 
   getCompetitions(): void {
     this.competitionService.getCompetitions()
-    .subscribe(competitions => {this.competitions = competitions; console.log(this.competitions); });
+    .subscribe(competitions => {this.competitions = competitions; console.log(this.competitions); this.loader = false; });
   }
 
 }

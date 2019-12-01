@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from './authentication-service.service';
+import { AuthenticationService } from './services/authentication.service';
 import { User } from './user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +9,17 @@ import { User } from './user';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(
-    private authenticationService: AuthenticationService) {  }
+  currentUser: User;
 
-  authenticatedUser: any;
-  logout(){
-    console.log("click");
-    this.authenticationService.logout().subscribe(any => console.log(any));
-  }
-  ngOnInit(): void {
-    //console.log(this.authenticatedUser);
-      this.authenticationService.currentUserSubject.subscribe(currentUser => {this.authenticatedUser = currentUser; console.log(this.authenticatedUser);});
-      //console.log(this.authenticationService.currentUserValue);
-      //console.log(this.authenticatedUser);
-  }
+    constructor(
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) {
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    }
+
+    logout() {
+        this.authenticationService.logout();
+        this.router.navigate(['/login']);
+    }
 }
