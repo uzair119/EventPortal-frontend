@@ -6,12 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CompetitionRegisterComponent } from './competition-register/competition-register.component';
 import { SignupComponent } from './signup/signup.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'competitions', component: CompetitionsComponent },
   { path: 'login', component: LoginComponent},
   { path: 'competitionregister', component: CompetitionRegisterComponent},
+  { path: 'dashboard', component: DashboardComponent},
   { path: 'register', component: SignupComponent},
   { path: '**', redirectTo: ''}
 

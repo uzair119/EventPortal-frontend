@@ -6,8 +6,9 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../services/authentication.service';
 import { XhrInterceptor } from '../xhr-interceptor.service';
 import { HttpResponse, HttpHeaders } from '@angular/common/http';
+import { DashboardService } from '../services/dashboard.service';
 
-@Component({ templateUrl: 'login.component.html' })
+@Component({ templateUrl: 'login.component.html', styleUrls: ['./login.component.scss'] })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-    ) {
+        private dashboardService: DashboardService) {
+        this.dashboardService.setDisableDashboard();
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
             this.router.navigate(['/home']);
@@ -53,10 +55,10 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(formData)
             .pipe(first())
             .subscribe(
-              (data: HttpResponse<any>) => {
-                console.log(data);
-                this.router.navigate(['/home']);
-              },
+                (data: HttpResponse<any>) => {
+                    console.log(data);
+                    this.router.navigate(['/home']);
+                },
                 error => {
                     console.log(error);
                     this.loading = false;

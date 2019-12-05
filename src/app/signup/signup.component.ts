@@ -4,8 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { first, map } from 'rxjs/operators';
 import { HttpResponse, HttpClient } from '@angular/common/http';
-import { User } from '../user';
+import { User } from '../model/user';
 import { environment } from 'src/environments/environment';
+import { DashboardService } from '../services/dashboard.service';
 
 @Component({
   selector: 'app-signup',
@@ -23,8 +24,10 @@ export class SignupComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private http: HttpClient
+    private http: HttpClient,
+    private dashboardService: DashboardService
   ) {
+      this.dashboardService.setDisableDashboard();
       // redirect to home if already logged in
       // if (this.authenticationService.currentUserValue) {
       //     this.router.navigate(['/login']);

@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { CompetitionRegisterComponent } from './competition-register/competition-register.component';
 import { SignupComponent } from './signup/signup.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SignupComponent } from './signup/signup.component';
     FooterComponent,
     CompetitionRegisterComponent,
     SignupComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
