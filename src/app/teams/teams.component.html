@@ -1,0 +1,35 @@
+<!-- Editable table -->
+<div id = "main">
+        <div class="card">
+            <h3 class="card-header text-center font-weight-bold text-uppercase py-4">My Teams</h3>
+            <div class="card-body">
+              <div id="table" class="table-editable">
+                <span class="table-add float-right mb-3 mr-2">
+                  <a class="text-success" (click)="add()">
+                    <mdb-icon fas icon="plus" size="2x"></mdb-icon>
+                  </a>
+                </span>
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                  <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Team Members</th>
+                  </tr>
+                  <tr *ngFor="let team of teams;">
+                    <td>
+                      {{team.id}}
+                    </td>
+                    <td>
+                      {{team.name}}
+                    </td>
+                    <td>
+                      {{team.teamMembers.length}}
+                    </td>
+                    
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- Editable table -->
+        </div>

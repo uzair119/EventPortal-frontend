@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Competition } from '../model/competition';
+import { DashboardService } from '../services/dashboard.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-competitioncard',
@@ -9,9 +12,16 @@ import { Competition } from '../model/competition';
 export class CompetitioncardComponent implements OnInit {
 
   @Input() competition: Competition;
-  constructor() { }
+  constructor(private dashboardService: DashboardService,
+    private router: Router
+    ) {
+    this.dashboardService.setDisableDashboard();
+  }
 
   ngOnInit() {
   }
 
+  register(id: any) {
+    this.router.navigate([`/competition/${id}`]);
+  }
 }

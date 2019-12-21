@@ -1,16 +1,41 @@
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
-    <links>
-        <a class="navbar-brand" href="#">Hidden brand</a>
-        <ul class="navbar-nav mr-auto mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-        </ul>
-    </links>
-</mdb-navbar>
+<div id = "main">
+<div class="col-md-6 card-deck">
+
+<!-- USE THIS PATTERN WHEN FIXING RESPONSIVENESS, ADDING MORE CARDS
+        <div class="row">
+                <app-competitioncard class="col-lg-4 col-md-6 mb-4" *ngFor="let competition of competitions"
+                  [competition]="competition"></app-competitioncard>
+          
+          
+          
+          
+              </div> -->
+
+
+    <!-- Card -->
+    <mdb-card id="comp">
+      <div class="view overlay waves-light" mdbWavesEffect>
+        <!-- Card img -->
+        <mdb-card-img src="https://150sec.com/wp-content/uploads/2018/12/tech_chill_baltic-1024x684.jpg" alt="Card image cap"></mdb-card-img>
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+      <!--Card content-->
+      <mdb-card-body>
+        <!--Title-->
+        <mdb-card-title>
+          <h4>Competitions</h4>
+        </mdb-card-title>
+  
+        <!--Text-->
+        <mdb-card-text> Competition details.
+        </mdb-card-text>
+  
+        <a routerLink="/competitionsdashboard" mdbBtn color="primary" mdbWavesEffect>View</a>
+      </mdb-card-body>
+    </mdb-card>
+  
+    
+  </div>
+ </div>

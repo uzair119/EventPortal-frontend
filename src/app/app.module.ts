@@ -17,6 +17,14 @@ import { FooterComponent } from './footer/footer.component';
 import { CompetitionRegisterComponent } from './competition-register/competition-register.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardCompetitionsComponent } from './dashboard-competitions/dashboard-competitions.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddCompetitionComponent } from './add-competition/add-competition.component';
+import { EditCompetitionComponent } from './edit-competition/edit-competition.component';
+import { CompetitionDetailsComponent } from './competition-details/competition-details.component';
+import { TeamsComponent } from './teams/teams.component';
+import { AddTeamComponent } from './add-team/add-team.component';
+
 
 
 @NgModule({
@@ -30,6 +38,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CompetitionRegisterComponent,
     SignupComponent,
     DashboardComponent,
+    DashboardCompetitionsComponent,
+    AddCompetitionComponent,
+    EditCompetitionComponent,
+    CompetitionDetailsComponent,
+    TeamsComponent,
+    AddTeamComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +51,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    BrowserAnimationsModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

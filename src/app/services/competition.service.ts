@@ -27,6 +27,21 @@ export class CompetitionService {
         //   catchError(this.handleError<Hero[]>('getHeroes', []))
         // );
     }
+    getCompetition (id: any): Observable<Competition> {
+      return this.http.get<Competition>(`${environment.apiUrl}/competition/${id}`);
+        // .pipe(
+        //   tap(_ => this.log('fetched heroes')),
+        //   catchError(this.handleError<Hero[]>('getHeroes', []))
+        // );
+    }
+
+    getCompetitionAdmin (id: any): Observable<Competition> {
+      return this.http.get<Competition>(`${environment.apiUrl}/auth/admin/competition/${id}`);
+        // .pipe(
+        //   tap(_ => this.log('fetched heroes')),
+        //   catchError(this.handleError<Hero[]>('getHeroes', []))
+        // );
+    }
 
     getDashboardCompetitions(): Observable<Competition[]>{
       return this.http.get<Competition[]>(`${environment.apiUrl}/auth/admin/competition`);
@@ -40,8 +55,8 @@ export class CompetitionService {
       return this.http.put<Competition>(`${environment.apiUrl}/auth/admin/competition/${competition.id}`, competition);
     }
 
-    deleteCompetition(id: Number) {
-      this.http.delete(`${environment.apiUrl}/auth/admin/competition/${id}`);
+    deleteCompetition(id: Number): Observable<any> {
+      return this.http.delete(`${environment.apiUrl}/auth/admin/competition/${id}`);
     }
 
 }

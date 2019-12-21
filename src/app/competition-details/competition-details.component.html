@@ -1,0 +1,9 @@
+<div id="main">
+    <div *ngIf="competition" class="jumbotron">
+        <h1 class="display-4">{{competition.name}}</h1>
+        <p class="lead">{{competition.description}}</p>
+        <hr class="my-4">
+        <p>Max team size: {{competition.maxTeamSize}}</p>
+        <a mdbBtn color="primary" size="lg" href="#" role="button" mdbWavesEffect>Learn more</a>
+    </div>
+</div>
