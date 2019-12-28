@@ -1,35 +1,103 @@
 <!-- Editable table -->
-<div id = "main">
-        <div class="card">
-            <h3 class="card-header text-center font-weight-bold text-uppercase py-4">My Teams</h3>
-            <div class="card-body">
-              <div id="table" class="table-editable">
-                <span class="table-add float-right mb-3 mr-2">
-                  <a class="text-success" (click)="add()">
-                    <mdb-icon fas icon="plus" size="2x"></mdb-icon>
-                  </a>
-                </span>
-                <table class="table table-bordered table-responsive-md table-striped text-center">
-                  <tr>
-                    <th class="text-center">ID</th>
-                    <th class="text-center">Name</th>
-                    <th class="text-center">Team Members</th>
-                  </tr>
-                  <tr *ngFor="let team of teams;">
-                    <td>
-                      {{team.id}}
-                    </td>
-                    <td>
-                      {{team.name}}
-                    </td>
-                    <td>
-                      {{team.teamMembers.length}}
-                    </td>
-                    
-                  </tr>
-                </table>
+<div id="main">
+  <div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">My Teams</h3>
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <span class="table-add float-right mb-3 mr-2">
+          <a class="text-success" (click)="add()">
+            <mdb-icon fas icon="plus" size="2x"></mdb-icon>
+          </a>
+        </span>
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">Team ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Team Size</th>
+            <th class="text-center">View Team</th>
+            <th class="text-center">Edit</th>
+            <th class="text-center">Remove</th>
+          </tr>
+          <tr *ngFor="let team of teams;">
+            <td>
+              {{team.id}}
+            </td>
+            <td>
+              {{team.name}}
+            </td>
+            <td>
+              {{team.teamMemberList.length + 1}}
+            </td>
+            <td><button type="button" mdbBtn color="black"  size="sm" class="my-0" data-toggle="modal"
+                data-target="#basicExample" id="team.id" (click)="frame.show()" mdbWavesEffect>View Team</button>
+
+              <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <!--Header-->
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel">{{team.name}}</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        (click)="frame.hide()">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <!--Body-->
+                    <div class="modal-body">
+
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>CNIC</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">TEAM LEAD</th>
+                            <td>{{team.teamLead.firstname}}</td>
+                            <td>{{team.teamLead.lastname}}</td>
+                            <td>{{team.teamLead.cnic}}</td>
+                          </tr>
+                          <tr *ngFor="let member of team.teamMemberList; let i = index">
+                            <th scope="row">Member# {{i+1}}</th>
+                            <td>{{member.firstname}}</td>
+                            <td>{{member.lastname}}</td>
+                            <td>{{member.cnic}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer">
+                      <button type="button" mdbBtn color="primary" outline="true" class="waves-light" mdbWavesEffect
+                        data-dismiss="modal" (click)="frame.hide()">Close</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <!-- Editable table -->
-        </div>
+            </td>
+
+            <td>
+              <span class="table-edit">
+                <button type="button" mdbBtn color="blue" rounded="true" size="sm" class="my-0"
+                  (click)="edit(team.id)">Edit</button>
+              </span>
+            </td>
+            <td>
+              <span class="table-remove">
+                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0"
+                  (click)="remove(team.id)">Remove</button>
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- Editable table -->
+</div>

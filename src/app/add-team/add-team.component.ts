@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import { Team } from '../model/team';
-import { TeamFormService } from '../services/team-form.service';
 import { Subscription } from 'rxjs';
 import { TeamService } from '../services/team.service';
 import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -28,9 +27,9 @@ export class AddTeamComponent implements OnInit {
     // private formBuilder: FormBuilder,
     // private route: ActivatedRoute,
     // private router: Router,
-    private teamFormService: TeamFormService,
     private teamService: TeamService,
     private formBuilder: FormBuilder,
+    private router: Router,
     private authenticationService: AuthenticationService
     // private competitionService: CompetitionService,
     // private dashboardService: DashboardService
@@ -91,7 +90,7 @@ export class AddTeamComponent implements OnInit {
       return;
     }
 
-    this.teamService.registerTeam(this.teamForm).subscribe(team => console.log(team));
+    this.teamService.registerTeam(this.teamForm).subscribe(team => {console.log(team); this.router.navigate(['/teams']); });
     // competition.name = this.f.name.value;
     // competition.description = this.f.description.value;
     // competition.maxTeamSize = this.f.maxTeamSize.value;
