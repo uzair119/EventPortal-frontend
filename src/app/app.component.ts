@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from './services/authentication.service';
 import { User } from './model/user';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { DashboardService } from './services/dashboard.service';
+import { slideInAnimation } from './animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    slideInAnimation
+    // animation triggers go here
+  ]
 })
 export class AppComponent {
   currentUser: User;
@@ -29,6 +34,10 @@ export class AppComponent {
       }
     });
     this.dashboardService.dashboardEnableObserver.subscribe(x => { this.dashboardEnabled = x; });
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 
   logout() {

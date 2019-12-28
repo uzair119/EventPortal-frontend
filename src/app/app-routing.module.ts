@@ -19,14 +19,14 @@ const routes: Routes = [
   { path: 'competitionsdashboard', component: DashboardCompetitionsComponent },
   { path: 'editcompetition/:id', component: EditCompetitionComponent },
   { path: 'addcompetition', component: AddCompetitionComponent },
-  { path: 'competitions', component: CompetitionsComponent },
+  { path: 'competitions', component: CompetitionsComponent, data: {animation: 'AboutPage'} },
   { path: 'competition/:id', component: CompetitionDetailsComponent },
   { path: 'teams', component: TeamsComponent },
   { path: 'addteam', component: AddTeamComponent },
   { path: 'login', component: LoginComponent },
   { path: 'competitionregister', component: CompetitionRegisterComponent },
   { path: 'register', component: SignupComponent },
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, data: {animation: 'HomePage'} },
   { path: '**', redirectTo: '' }
 
 ];
